@@ -1,7 +1,8 @@
 ---
+import ThemeProvider from "../components/primerbrand/ThemeProvider.tsx";
+import Box from "../components/primerbrand/Box.tsx";
 import Footer from "../components/Footer.tsx";
 import Header from "../components/Header.tsx";
-import Main from "../components/Main.tsx";
 
 import "@primer/react-brand/lib/css/main.css";
 import "@stockastix/react-brand/lib/css/main.css";
@@ -23,17 +24,29 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body
-    style={{
-      height: "100vh",
-      display: "flex",
-      "flex-direction": "column",
-    }}
-  >
-    <Header site={Astro.site} client:only="react" />
-    <Main client:only="react">
-      <slot />
-    </Main>
-    <Footer site={Astro.site} client:only="react" />
+  <body>
+    <ThemeProvider client:only="react">
+      <div
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          backgroundColor: "var(--brand-color-canvas-default)",
+        }}
+      >
+        <Header site={Astro.site} client:only="react" />
+        <Box
+          client:only="react"
+          style={{
+            maxWidth: "1280px",
+            margin: "74px 5% 0",
+            flexGrow: 1,
+          }}
+        >
+          <slot />
+        </Box>
+        <Footer site={Astro.site} client:only="react" />
+      </div>
+    </ThemeProvider>
   </body>
 </html>
