@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "../layouts/Base.astro";
-import Heading from "../components/primerbrand/Heading.tsx";
+import Hero from "../components/Hero";
 const title = Astro.site!.hostname;
 ---
 
 <BaseLayout title={title}>
-  <Heading client:only="react">{title}</Heading>
+  <Hero client:only="react" />
 </BaseLayout>
