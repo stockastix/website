@@ -1,0 +1,36 @@
+---
+import { getCollection } from "astro:content";
+
+import Layout from "../../layouts/Base.astro";
+import RiverItem from "../../components/RiverItem.tsx";
+
+const tools = await getCollection("tool");
+const title = "All tools";
+---
+
+<Layout title={title}>
+  {
+    tools
+      // sort in weight order (as found in frontmatter)
+      .sort((a, b) => a.data.weight - b.data.weight)
+      .map(async (tool: (typeof tools)[0], index) => {
+        const {
+          slug,
+          data: { image, heading },
+        } = tool;
+        const { Content } = await tool.render();
+        return (
+          <RiverItem
+            href={slug}
+            image={image}
+            heading={heading}
+            ctaText="Open tool"
+            align={index % 2 ? "start" : "end"}
+            client:only="react"
+          >
+            <Content />
+          </RiverItem>
+        );
+      })
+  }
+</Layout>
