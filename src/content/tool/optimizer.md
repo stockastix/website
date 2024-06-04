@@ -1,7 +1,7 @@
 ---
 title: Trading strategy optimization tool
 heading: Optimize
-component: Chart
+component: Optimizer
 image: bull_i3chjn
 weight: 3
 ---

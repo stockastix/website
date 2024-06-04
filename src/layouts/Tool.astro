@@ -1,0 +1,17 @@
+---
+import BaseLayout from "./Base.astro";
+
+import Pane from "../components/Pane.tsx";
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter?.title}>
+  <Pane
+    client:only="react"
+    title={frontmatter?.title}
+    tool={frontmatter?.component}
+  >
+    <slot />
+  </Pane>
+</BaseLayout>

@@ -1,7 +1,7 @@
 ---
 title: Backtesting tool
 heading: Backtest
-component: Chart
+component: Backtest
 image: bear_d7lmsf
 weight: 2
 ---
