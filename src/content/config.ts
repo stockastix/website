@@ -16,7 +16,14 @@ const docsCollection = defineCollection({
   }),
 });
 
+const tutorialCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+  }),
+});
+
 export const collections = {
   tool: toolCollection,
   docs: docsCollection,
+  tutorial: tutorialCollection,
 };

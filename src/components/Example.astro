@@ -2,4 +2,15 @@
 import { XInput } from "@stockastix/react";
 ---
 
+{
+  /* This hack is needed to make sure ./ChartApp.tsx works well 
+ More specifically, a code block statement in mdx files undergoes two 
+ custom components transformations for tutorial pages:
+ - <code> becomes <Example>
+ - <pre> becomes <ChartApp> 
+ This leads to Example being embedded in ChartApp. But innertText of XInput returns nothing
+ so I include a hidden div to make sure to be able to retrieve the slot content */
+}
+<div style="display: none"><slot /></div>
+
 <XInput type="expression" client:only="react"><slot /></XInput>

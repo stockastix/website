@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+
+import Layout from "../../layouts/Base4mdx.astro";
+import ChartApp from "../../components/ChartApp.astro";
+import Example from "../../components/Example.astro";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const docsEntries = await getCollection("tutorial");
+  return docsEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const { title } = entry.data;
+---
+
+<Layout title={title}>
+  <Content components={{ code: Example, pre: ChartApp }} />
+</Layout>

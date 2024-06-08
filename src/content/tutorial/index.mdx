@@ -1,0 +1,60 @@
+---
+title: Tutorial - Building complex indicators
+---
+
+# Building complex indicators
+
+In this tutorial we show how to build a relatively complex,
+yet well-known indicator. We take the example of the RSI
+(aka Relative Strength Indicator),
+and show how it is possible to construct this indicator
+from elementary mathematical operations.
+
+It turns out that RSI is natively supported by our tools,
+but there are many technical indicators that are not.
+On the other hand, elementary mathematical operations are all natively
+supported; thus, it is possible to construct an infinite number of
+indicators, whether well-known or personalized.
+
+## Pre-requisite
+
+For the record, we can refer to the definitions of the indicators (
+[RSI](https://www.investopedia.com/terms/r/rsi.asp) and
+[EMA](https://www.investopedia.com/terms/e/ema.asp)),
+which are assumed to be known.
+
+## Defining an RSI indicator
+
+We observe that the definition of the RSI involves an exponential moving average.
+Usually, the RSI is calculated with a period of 14. We therefore need
+to determine the right period associated with the exponential average
+(it is not 14!). We leave it to the reader to verify that this period
+is given by the formula: _days = (smoothing \* period - 1)_
+
+In this case, <i>2 x 14 - 1 = 27</i> since the smoothing used for
+the exponential average is two.
+
+It therefore follows that we can construct the RSI indicator as follows.
+This will give the same result as if we had used the native indicator: `rsi( DJI, 14 )`.
+
+> Please note that for performance reasons it is always
+> preferable to use the native indicator. Our example is therefore
+> for educational purposes only.
+
+Click the "Draw" button and check by yourself that our home-made RSI
+indeed equals the built-in indicator.
+
+```json
+{
+  "defs": [
+    "DJI = ^DJI",
+    "delta = DJI - previous(DJI,1)",
+    "AverageGain = ema( max(delta, 0), 27)",
+    "AverageLoss = ema( -min(delta, 0), 27)",
+    "MyRSI = 100 * AverageGain / ( AverageLoss + AverageGain )",
+    "BuiltinRSI = rsi( DJI, 14 )"
+  ],
+  "draw": [["DJI"], ["MyRSI", "BuiltinRSI"]],
+  "show": []
+}
+```

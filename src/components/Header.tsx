@@ -6,6 +6,7 @@ export default function Header({ site }: { site?: URL }) {
   const links = {
     tools: "/tool/",
     documentation: "/docs/",
+    tutorial: "/tutorial/index",
   };
 
   const args = {

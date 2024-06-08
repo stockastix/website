@@ -14,7 +14,7 @@ export default defineConfig({
     mdx({
       optimize: {
         // Prevent the optimizer from handling those elements
-        ignoreElementNames: ["code"],
+        ignoreElementNames: ["code", "pre"],
       },
     }),
   ],
