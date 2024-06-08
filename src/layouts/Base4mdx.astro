@@ -1,0 +1,73 @@
+---
+// For some reason, I cannot include <slot /> built from mdx files
+// withing react components of my design system.
+// So I have to resort to an adhoc layout for my content.
+// This is not perfect though, because I cannot fully wrap
+// my markdown content within react and especially within
+// the theme provider, or a pane.
+
+import ThemeProvider from "../components/primerbrand/ThemeProvider.tsx";
+import Footer from "../components/Footer.tsx";
+import Header from "../components/Header.tsx";
+
+import "@primer/react-brand/lib/css/main.css";
+import "@stockastix/react-brand/lib/css/main.css";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content="charting and backtesting" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    {
+      /* Because I can't use a global ThemeProvider here,
+        I have to manually set the data-color-mode to simulate an "auto" value. 
+        This works ok to set the mode according to the user system preferences.
+        However, the page needs a refresh if the user changes her settings. */
+    }
+    <script>
+      document.body.setAttribute(
+        "data-color-mode",
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light",
+      );
+    </script>
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        backgroundColor: "var(--brand-color-canvas-default)",
+      }}
+    >
+      <ThemeProvider client:only="react">
+        <Header site={Astro.site} client:only="react" />
+      </ThemeProvider>
+      <div
+        style={{
+          maxWidth: "1280px",
+          margin: "74px 5% 0",
+          flexGrow: 1,
+        }}
+      >
+        <slot />
+      </div>
+      <ThemeProvider client:only="react">
+        <Footer site={Astro.site} client:only="react" />
+      </ThemeProvider>
+    </div>
+  </body>
+</html>

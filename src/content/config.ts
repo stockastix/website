@@ -10,6 +10,13 @@ const toolCollection = defineCollection({
   }),
 });
 
+const docsCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+  }),
+});
+
 export const collections = {
   tool: toolCollection,
+  docs: docsCollection,
 };

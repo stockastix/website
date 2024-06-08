@@ -22,9 +22,11 @@ export default function Tool({ tool }: Props) {
         <Blankslate.Description>
           We are working hard on it...
         </Blankslate.Description>
-        <Blankslate.PrimaryAction href="/tool/">
-          Try other tools
-        </Blankslate.PrimaryAction>
+        {tool && (
+          <Blankslate.PrimaryAction href="/tool/">
+            Try other tools
+          </Blankslate.PrimaryAction>
+        )}
       </Blankslate>
     </ThemeProvider>
   );

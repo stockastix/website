@@ -1,0 +1,12 @@
+---
+import Heading from "../components/primerbrand/Heading.tsx";
+import BaseLayout from "./Base4mdx.astro";
+
+const { title } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <Heading size={"5"} client:only="react">{title}</Heading>
+
+  <slot />
+</BaseLayout>

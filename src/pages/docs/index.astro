@@ -1,0 +1,70 @@
+---
+// import { getCollection } from "astro:content";
+import { Link } from "@primer/react";
+
+import Layout from "../../layouts/Base.astro";
+import Heading from "../../components/primerbrand/Heading.tsx";
+import Pane from "../../components/Pane.tsx";
+import UnorderedList from "../../components/UnorderedList.tsx";
+
+const title = "Documentation";
+
+// const docs = await getCollection("docs");
+const docs = await Astro.glob("../../content/docs/**/*.mdx");
+const categories = new Set(
+  docs.map((doc) => doc.url?.split("/").splice(-2)[0]),
+);
+---
+
+<Layout title={title}>
+  <Pane client:only="react" position="start">
+    {
+      Array.from(categories).map(
+        (category) =>
+          category && (
+            <>
+              <Heading as="h6" client:only="react">
+                {category[0].toUpperCase() +
+                  category.slice(1).split("-").join(" ")}
+              </Heading>
+              <UnorderedList
+                client:only="react"
+                items={
+                  docs
+                    .filter(
+                      (doc) =>
+                        doc.url &&
+                        doc.url.split("/").splice(-2)[0] === category,
+                    )
+                    .map((doc) => [
+                      doc.frontmatter.title as string,
+                      doc.url?.split("content")[1].split(".")[0] || "",
+                    ])
+                  // <a href={doc.url?.split("content")[1].split(".")[0]}>
+                  //   {doc.frontmatter.title}
+                  // </a>
+                }
+              />
+            </>
+          ),
+      )
+    }
+  </Pane>
+
+  {/*  {docs.map((doc) => JSON.stringify(doc))} */}
+  {
+    /* <ul>
+    {
+      docs
+        .sort((a, b) => a.slug - b.slug)
+        .map((doc) => (
+          <li>
+            <Link href={doc.slug} client:only="react">
+              {doc.data.title}
+            </Link>
+          </li>
+        ))
+    }
+  </ul> */
+  }
+</Layout>

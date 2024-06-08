@@ -1,9 +1,8 @@
-import { Heading as PrimerHeading } from "@primer/react-brand";
+import {
+  Heading as PrimerHeading,
+  type HeadingProps,
+} from "@primer/react-brand";
 
-type HeadingProps = {
-  children?: string;
-};
-
-export default function Heading({ children }: HeadingProps) {
-  return <PrimerHeading>{children}</PrimerHeading>;
+export default function Heading({ children, ...props }: HeadingProps) {
+  return <PrimerHeading {...props}>{children}</PrimerHeading>;
 }
