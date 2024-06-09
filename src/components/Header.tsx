@@ -5,6 +5,7 @@ export default function Header({ site }: { site?: URL }) {
 
   const links = {
     tools: "/tool/",
+    "My Studies": "/studies",
     documentation: "/docs/",
     tutorial: "/tutorial/index",
   };
