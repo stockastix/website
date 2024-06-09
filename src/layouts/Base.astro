@@ -23,6 +23,7 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <script is:inline src="//unpkg.com/@ungap/custom-elements/es.js"></script>
   </head>
   <body>
     <ThemeProvider client:only="react">
