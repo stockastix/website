@@ -25,7 +25,7 @@ export default function Chart({ children, type }: Props) {
       <BaseStyles>
         <ChartApp type={type}>
           {
-            spec
+            children && spec
             // {
             // defs: ['average100 = sma(^DJI, 100)', 'average200 = sma(^DJI, 200)'],
             // draw: [['average100'], ['average200']],
