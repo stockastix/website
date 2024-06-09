@@ -4,9 +4,10 @@ import { ChartApp } from "@stockastix/react";
 
 type Props = {
   children?: { props: { value: string } };
+  type: "time" | "backtest";
 };
 
-export default function Chart({ children }: Props) {
+export default function Chart({ children, type }: Props) {
   // children.props.value has a shape similar to:
   // "<span class="line"><span>{</span></span>
   // <span class="line"><span>    "defs": [],</span></span>
@@ -22,7 +23,7 @@ export default function Chart({ children }: Props) {
   return (
     <ThemeProvider theme={theme} colorMode="auto">
       <BaseStyles>
-        <ChartApp type="time">
+        <ChartApp type={type}>
           {
             spec
             // {

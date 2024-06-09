@@ -2,4 +2,6 @@
 import StockastixChartApp from "./ChartApp.tsx";
 ---
 
-<StockastixChartApp client:only="react"><slot /></StockastixChartApp>
+<StockastixChartApp type="time" client:only="react">
+  <slot />
+</StockastixChartApp>

@@ -18,7 +18,7 @@
     "@astrojs/netlify": "^5.2.1",
     "@astrojs/react": "^3.4.0",
     "@primer/react-brand": "^0.34.0",
-    "@stockastix/react": "^0.0.2",
+    "@stockastix/react": "^0.0.3",
     "@stockastix/react-brand": "^0.0.1",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

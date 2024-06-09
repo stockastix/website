@@ -11,7 +11,9 @@ export default function Tool({ tool }: Props) {
   // @todo: manage the various tools
   // For now only chart is available
   return tool === "Chart" ? (
-    <ChartApp />
+    <ChartApp type="time" />
+  ) : tool === "Backtest" ? (
+    <ChartApp type="backtest" />
   ) : (
     <ThemeProvider>
       <Blankslate border={true} spacious={true}>
