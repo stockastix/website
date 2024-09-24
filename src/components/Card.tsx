@@ -1,6 +1,14 @@
-import { Card, Link, Props } from "@primer/react-brand";
+import { Card } from "@primer/react-brand";
 
 import { IMG_CDN } from "../config.js";
+
+interface Props {
+  children: React.ReactNode;
+  image: string;
+  heading: string;
+  href: string;
+  ctaText?: string;
+}
 
 export default function ToolCard({
   children,
