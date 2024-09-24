@@ -6,7 +6,7 @@ export default function MyTimeline() {
       <Timeline.Item>
         <em>Chart</em> any indicator, and identify patterns. You can view
         occurences over a time series, or overlap all occurences to observe in a
-        snap what happens next at once.
+        snap what happens next.
       </Timeline.Item>
       <Timeline.Item>
         <em>Backtest</em> your custom signals, whether bullish or bearish. View
