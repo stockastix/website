@@ -1,0 +1,70 @@
+---
+import ThemeProvider from "../components/primerbrand/ThemeProvider.tsx";
+import Box from "../components/primerbrand/Box.tsx";
+import Footer from "../components/Footer.tsx";
+import Header from "../components/Header.tsx";
+import Stack from "../components/primerbrand/Stack.tsx";
+
+import "@primer/react-brand/lib/css/main.css";
+import "@stockastix/react-brand/lib/css/main.css";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content="charting and backtesting" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <script is:inline src="//unpkg.com/@ungap/custom-elements/es.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-BG7R43KT6T"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-BG7R43KT6T");
+    </script>
+  </head>
+  <body>
+    <ThemeProvider client:only="react">
+      <div
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          backgroundColor: "var(--brand-color-canvas-default)",
+        }}
+      >
+        <Header site={Astro.site} client:only="react" />
+        <Box
+          client:only="react"
+          style={{
+            maxWidth: "1280px",
+            margin: "74px 5% 0",
+            flexGrow: 1,
+          }}
+        >
+          <Stack client:only="react">
+            <slot />
+          </Stack>
+        </Box>
+        <Footer site={Astro.site} client:only="react" />
+      </div>
+    </ThemeProvider>
+  </body>
+</html>

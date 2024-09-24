@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 
-import Layout from "../../layouts/Base.astro";
-import RiverItem from "../../components/RiverItem.tsx";
+import Layout from "../../layouts/Tools.astro";
+import Card from "../../components/Card.tsx";
 
 const tools = await getCollection("tool");
 const title = "All tools";
@@ -20,16 +20,15 @@ const title = "All tools";
         } = tool;
         const { Content } = await tool.render();
         return (
-          <RiverItem
+          <Card
             href={slug}
             image={image}
             heading={heading}
             ctaText="Open tool"
-            align={index % 2 ? "start" : "end"}
             client:only="react"
           >
             <Content />
-          </RiverItem>
+          </Card>
         );
       })
   }
