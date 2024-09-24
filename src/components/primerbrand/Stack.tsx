@@ -1,4 +1,4 @@
-import { Stack as PrimerStack, Card } from "@primer/react-brand";
+import { Stack as PrimerStack, useWindowSize } from "@primer/react-brand";
 import type React from "react";
 
 type StackProps = {
@@ -7,12 +7,14 @@ type StackProps = {
 };
 
 export default function Stack({ children, style }: StackProps) {
+  const { isMedium } = useWindowSize();
+
   return (
     <PrimerStack
       gap="spacious"
       justifyContent="center"
-      direction="horizontal"
       style={style}
+      direction={isMedium ? "horizontal" : "vertical"}
     >
       {children}
     </PrimerStack>
