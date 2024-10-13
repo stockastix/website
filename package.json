@@ -13,16 +13,16 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.3",
-    "@astrojs/mdx": "^3.1.7",
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/mdx": "^3.1.8",
     "@astrojs/netlify": "^5.5.3",
     "@astrojs/react": "^3.6.2",
     "@primer/react-brand": "^0.40.1",
-    "@stockastix/react": "^0.0.4",
+    "@stockastix/react": "^0.0.5",
     "@stockastix/react-brand": "^0.0.1",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "astro": "^4.15.8",
+    "astro": "^4.16.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "typescript": "^5.6.0"
@@ -30,6 +30,7 @@
   "devDependencies": {
     "eslint": "^9.4.0",
     "eslint-plugin-astro": "^1.2.4",
+    "gotrue-js": "^0.9.29",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "typescript-eslint": "^8.6.0"
