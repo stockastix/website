@@ -18,4 +18,27 @@ export default defineConfig({
       },
     }),
   ],
+  vite: {
+    build: {
+      rollupOptions: {
+        external: [
+          // "@stockastix/chartgl/time-chart",
+          // "@stockastix/chartgl/event-chart",
+          "@stockastix/lang/base",
+          // "@stockastix/parse",
+        ],
+      },
+    },
+    ssr: {
+      //     noExternal: [
+      //       "@primer/react",
+      //       "@primer/react-brand",
+      //       "@primer/primitives",
+      //       "@stockastix/react",
+      //       "@stockastix/react-brand",
+      //       "@styled-system/css",
+      //       "styled-components",
+      //     ],
+    },
+  },
 });
