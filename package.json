@@ -19,7 +19,7 @@
     "@astrojs/react": "^3.6.2",
     "@primer/react-brand": "^0.40.1",
     "@stockastix/react": "^0.0.5",
-    "@stockastix/react-brand": "^0.0.2",
+    "@stockastix/react-brand": "^0.0.3",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "astro": "^4.16.2",
